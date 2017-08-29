@@ -73,8 +73,6 @@ function playSong(radio) {
       } else {
         current = radio.current;
       }
-      console.log(current.song);
-
       // ARRANGE ELEMENTS
       var elems = document.querySelectorAll("#info span");
       [].forEach.call(elems, function(el, i) {
@@ -91,18 +89,22 @@ function playSong(radio) {
       info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
       // CALL INTRO
-      var mySound = soundManager.createSound({
-        url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
-        autoPlay: true,
-        autoLoad: true,
-        // url: 'intro/'+radio.name+'/'+current+'.mp3',
-        onfinish: function() {
-          // DESTROY AUDIO
-          this.destruct();
-          // PLAY YOUTUBE
-          playYoutube(current,radio);
-        }
-      });
+      if(radio.time == 0) {
+        var mySound = soundManager.createSound({
+          url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
+          autoPlay: true,
+          autoLoad: true,
+          // url: 'intro/'+radio.name+'/'+current+'.mp3',
+          onfinish: function() {
+            // DESTROY AUDIO
+            this.destruct();
+            // PLAY YOUTUBE
+            playYoutube(current,radio);
+          }
+        });
+      } else {
+        playYoutube(current,radio);
+      }
     }
   });
 }
