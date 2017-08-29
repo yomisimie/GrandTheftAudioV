@@ -98,7 +98,6 @@ function testing(radio) {
         events: {
           onReady: function (e) {
             var duration = e.target.getDuration();
-            console.log(radio.time);
             if(radio.time == 0) {
               duration = Math.floor(Math.random()*duration);
             } else {
