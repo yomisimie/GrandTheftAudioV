@@ -51,10 +51,7 @@ for(var i in radios) {
 info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
-var xhr = new XMLHttpRequest();
-xhr.open('GET', 'radios/'+radio.name+'.txt');
-xhr.send();
-console.log(xhr.responseText);
+readTextFile('radios/'+radio.name+'.txt')
 
 function testing(radio) {
   if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
@@ -139,6 +136,23 @@ function onYouTubePlayerAPIReady() {
 }
 function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
+}
+function readTextFile(file)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", file, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+            }
+        }
+    }
+    rawFile.send(null);
 }
 </script>
 </body>
