@@ -59,7 +59,6 @@ function testing(radio) {
     data: {radio:'radio'},
     success: function(data) {
       radio.music = data.split(',');
-      console.log(radio.music);
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
         radio.current = current;
@@ -102,6 +101,7 @@ function testing(radio) {
                 duration = radio.time;
               }
             }
+            time = 0;
             e.target.seekTo(duration);
             e.target.playVideo();
           },
