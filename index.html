@@ -52,7 +52,7 @@ info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function testing(radio) {
-  if(readTextFile('radios/'+radio.name+'.txt') !== '') {
+  if(readTextFile('radios/'+radio.name+'.txt') && readTextFile('radios/'+radio.name+'.txt') !== '') {
     radio.music = readTextFile('radios/'+radio.name+'.txt');
     console.log(radio.music);
   }
