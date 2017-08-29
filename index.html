@@ -52,7 +52,7 @@ info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function testing(radio) {
-  readTextFile('radios/'+radio.name+'.txt')
+  radio.music = readTextFile('radios/'+radio.name+'.txt')
 
   if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
     var current = radio.music[Math.floor(Math.random()*radio.music.length)];
@@ -148,7 +148,7 @@ function readTextFile(file)
             if(rawFile.status === 200 || rawFile.status == 0)
             {
                 var allText = rawFile.response;
-                alert(allText);
+                return allText;
             }
         }
     }
