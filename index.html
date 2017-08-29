@@ -59,39 +59,36 @@ function testing(radio) {
     data: {radio:'radio'},
     success: function(data) {
       radio.music = data;
-    }
-  });
+      if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
+        var current = radio.music[Math.floor(Math.random()*radio.music.length)];
+        radio.current = current;
+      } else {
+        current = radio.current;
+      }
 
-  if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
-    var current = radio.music[Math.floor(Math.random()*radio.music.length)];
-    radio.current = current;
-  } else {
-    current = radio.current;
-  }
+      var elems = document.querySelectorAll("#info span");
+      [].forEach.call(elems, function(el, i) {
+        if(el.title == radio.name) {
+          el.classList.add('current');
+        } else {
+          el.classList.remove('current');
+        }
+        var degrees = 360 / elems.length;
+        el.style.transform = 'rotate('+((i+1) * degrees)+'deg) translate('+(window.innerHeight - (elSize + 10)) / 2+'px) rotate(-'+((i+1) * degrees)+'deg)';
+        elSize = getEmSize(el);
+      });
+      info.style.height = (window.innerHeight - (elSize + 10))+'px';
+      info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
-  var elems = document.querySelectorAll("#info span");
-  [].forEach.call(elems, function(el, i) {
-    if(el.title == radio.name) {
-      el.classList.add('current');
-    } else {
-      el.classList.remove('current');
-    }
-    var degrees = 360 / elems.length;
-    el.style.transform = 'rotate('+((i+1) * degrees)+'deg) translate('+(window.innerHeight - (elSize + 10)) / 2+'px) rotate(-'+((i+1) * degrees)+'deg)';
-    elSize = getEmSize(el);
-  });
-  info.style.height = (window.innerHeight - (elSize + 10))+'px';
-  info.style.width = (window.innerHeight - (elSize + 10))+'px';
-
-  player = new YT.Player("player", {
-      videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
-      loop: true,
-      playerVars: {
-        autoplay: 0,
-        loop: 0,
-        start: 0,
-      },
-      events: {
+      player = new YT.Player("player", {
+        videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
+        loop: true,
+        playerVars: {
+          autoplay: 0,
+          loop: 0,
+          start: 0,
+        },
+        events: {
           onReady: function (e) {
             var duration = e.target.getDuration();
             if(radio.time == 0) {
@@ -110,7 +107,7 @@ function testing(radio) {
           onStateChange: function (event) {
             radio.time = Math.floor(event.target.getCurrentTime());
             if (event.data === 1) {
-                // info.innerHTML = "video started playing";
+              // info.innerHTML = "video started playing";
             }
             if (event.data === 0) {
               current = radio.music[Math.floor(Math.random()*radio.music.length)];
@@ -119,9 +116,12 @@ function testing(radio) {
               event.target.playVideo();
             }
           }
-      }
+        }
+      });
+      // you can do more stuff with the player variable
+    }
   });
-  // you can do more stuff with the player variable
+
 }
 var intval = setInterval(function(){
   time++;
