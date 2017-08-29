@@ -9,6 +9,7 @@
 <div id="info"></div>
 <script src="https://www.youtube.com/player_api"></script>
 <script>
+var player = [];
 var info = document.getElementById("info");
 var divPlayer = document.getElementById("player");
 var elSize = 64;
@@ -70,7 +71,7 @@ function testing(radio) {
   info.style.height = (window.innerHeight - (elSize + 10))+'px';
   info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
-  var player = new YT.Player("player", {
+  player = new YT.Player("player", {
       videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
       loop: true,
       playerVars: {
@@ -106,6 +107,7 @@ function testing(radio) {
   // you can do more stuff with the player variable
 }
 function changeStation(station) {
+  player.pauseVideo();
   player.remove();
   var p = document.createElement('div');
   p.setAttribute("id", "player");
