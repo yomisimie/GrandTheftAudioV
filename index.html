@@ -83,7 +83,6 @@ function testing(radio) {
       events: {
           onReady: function (e) {
             var duration = e.target.getDuration();
-            console.log(duration);
             if(radio.time == 0) {
               duration = Math.floor(Math.random()*duration);
             } else {
@@ -94,7 +93,6 @@ function testing(radio) {
                 duration = radio.time;
               }
             }
-            time = 0;
             e.target.seekTo(duration);
             e.target.playVideo();
           },
@@ -118,7 +116,6 @@ var intval = setInterval(function(){
   time++;
 }, 1000);
 function changeStation(station) {
-  console.log(time);
   // player.pauseVideo();
   var elem = document.getElementById('player');
   elem.parentNode.removeChild(elem);
