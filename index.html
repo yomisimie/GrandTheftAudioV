@@ -21,11 +21,6 @@ divPlayer.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 
 info.style.height = (window.innerHeight - (elSize + 10))+'px';
 info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
-var mySound = soundManager.createSound({
-  url: 'intro/wcc/t8WHDsx306Y.mp3'
-});
-
-
 // var audio = document.createElement("audio");
 // audio.src = "intro/wcc/t8WHDsx306Y.mp3";
 // audio.addEventListener("ended", function () {
@@ -78,6 +73,13 @@ function testing(radio) {
       } else {
         current = radio.current;
       }
+
+      var mySound = soundManager.createSound({
+        url: 'intro/'+radio.name+'/'+current+'.mp3',
+        onfinish: function() {
+          console.log(done);
+        }
+      });
 
       var elems = document.querySelectorAll("#info span");
       [].forEach.call(elems, function(el, i) {
