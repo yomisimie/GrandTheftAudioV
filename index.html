@@ -167,10 +167,7 @@ function playYoutube(current,radio) {
           // info.innerHTML = "video started playing";
         }
         if (event.data === 0) {
-          current = radio.music[Math.floor(Math.random()*radio.music.length)];
-          radio.current = current;
-          event.target.loadVideoById(current.song);
-          event.target.playVideo();
+          playSong(radio);
         }
       }
     }
