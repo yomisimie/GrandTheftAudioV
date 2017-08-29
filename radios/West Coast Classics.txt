@@ -1,1 +1,16 @@
-[{song: "ldnt6mazGno", name: "Ambitionz Az a Ridah", intro: ["Ambitionz Az a Ridah/1.mp3"]},{song: "6n0p_yME-78", name: "This DJ", intro: ["This DJ/1.mp3"]}]
+{
+  "song": "ldnt6mazGno",
+  "name": "Ambitionz Az a Ridah",
+  "artist": "Tupac",
+  "intro": [
+	"Ambitionz Az a Ridah/1.mp3"
+  ]
+},
+{
+  "song": "6n0p_yME-78",
+  "name": "This DJ",
+  "artist": "Warren G",
+  "intro": [
+	"This DJ/1.mp3"
+  ]
+}
