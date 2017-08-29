@@ -63,14 +63,14 @@ var radio = radios[Math.floor(Math.random() * radios.length)];
 function playSong(radio) {
   $.ajax({
     type: 'GET',
-    url: 'radios/'+radio.name+'.txt',
+    url: 'radios/West Coast Classics.txt',
     data: {radio:'radio'},
     success: function(data) {
       // GET RANDOM SONG
       radio.music = data.split(',');
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
-        radio.current = current;
+        radio.current = current.song;
       } else {
         current = radio.current;
       }
@@ -92,7 +92,7 @@ function playSong(radio) {
 
       // CALL INTRO
       var mySound = soundManager.createSound({
-        url: 'intro/West Coast Classics/t8WHDsx306Y.mp3',
+        url: 'intro/'+radio.name+'/'+current+'.mp3',
         autoPlay: true,
         autoLoad: true,
         // url: 'intro/'+radio.name+'/'+current+'.mp3',
