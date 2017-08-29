@@ -91,6 +91,7 @@ function playSong(radio) {
 
       // CALL INTRO
       var mySound = soundManager.createSound({
+        type: 'audio/wav',
         url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
         autoPlay: true,
         autoLoad: true,
