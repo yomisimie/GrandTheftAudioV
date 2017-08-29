@@ -108,8 +108,8 @@ function testing(radio) {
   // you can do more stuff with the player variable
 }
 function changeStation(station) {
-  player.pauseVideo(function(){
-    document.getElementById('player').remove();
+  player.pauseVideo(function(e){
+    console.log(e);
   });
   var p = document.createElement('div');
   p.setAttribute("id", "player");
