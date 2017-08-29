@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Grand Theft Audio V</title>
+    <link href="style.css" rel="stylesheet" />
+  </head>
+<body>
+<div id="player"></div>
+<div id="info"></div>
+<script src="https://www.youtube.com/player_api"></script>
+<script>
+var info = document.getElementById("info");
+var divPlayer = document.getElementById("player");
+var elSize = 64;
+divPlayer.style.width = (window.innerHeight - (200 + (elSize + 10))) + 'px';
+divPlayer.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 9) + 'px';
+info.style.height = (window.innerHeight - (elSize + 10))+'px';
+info.style.width = (window.innerHeight - (elSize + 10))+'px';
+
+var blue_ark = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Blue Ark', image: 'radio/blue_ark.png'};
+var blaine = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Blaine County Radio', image: 'radio/blaine.png'};
+var channel_x = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Channel X', image: 'radio/channel_x.png'};
+var east_los = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'East Los FM', image: 'radio/east_los.png'};
+var flylo = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'FlyLo FM', image: 'radio/flylo.png'};
+var ls_rock = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Los Santos Rock Radio', image: 'radio/ls_rock.png'};
+var lowdown = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'The Lowdown 91.1', image: 'radio/lowdown.png'};
+var non_stop_pop = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Non-Stop-Pop FM', image: 'radio/non_stop_pop.png'};
+var ls_radio = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Radio Los Santos', image: 'radio/ls_radio.png'};
+var mirror_park = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Radio Mirror Park', image: 'radio/mirror_park.png'};
+var rebel = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Rebel Radio', image: 'radio/rebel.png'};
+var soulwax = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Soulwax FM', image: 'radio/soulwax.png'};
+var space = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Space 103.2', image: 'radio/space.png'};
+var vinewood = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Vinewood Boulevard Radio', image: 'radio/vinewood.png'};
+var wcc = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'West Coast Classics', image: 'radio/wcc.png'};
+var wctr = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'WCTR', image: 'radio/wctr.png'};
+var www = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'WorldWide FM', image: 'radio/www.png'};
+var the_lab = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'The Lab', image: 'radio/the_lab.png'};
+var self_radio = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "0UPhZk7mG0", "gPTGR4FYCMA", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Self Radio', image: 'radio/self_radio.png'};
+var radios = [blue_ark, channel_x, east_los, flylo, ls_rock, lowdown, non_stop_pop, ls_radio, mirror_park, rebel, soulwax, space, vinewood, wcc, www, the_lab, self_radio];
+var stations = '';
+for(var i in radios) {
+  stations = stations + "<br/>";
+  if(radios[i].image) {
+    stations = stations + "<span onclick='changeStation(this);' station='"+i+"' title='"+radios[i].name+"'><img src='"+radios[i].image+"'/></span>";
+  } else {
+    stations = stations + "<span onclick='changeStation(this);' station='"+i+"' title='"+radios[i].name+"'>"+radios[i].name+"</span>";
+  }
+}
+info.innerHTML = stations;
+var radio = radios[Math.floor(Math.random() * radios.length)];
+
+function testing(radio) {
+  if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
+    var current = radio.music[Math.floor(Math.random()*radio.music.length)];
+    radio.current = current;
+  } else {
+    current = radio.current;
+  }
+  var elems = document.querySelectorAll("#info span");
+  [].forEach.call(elems, function(el, i) {
+    if(el.title == radio.name) {
+      el.classList.add('current');
+    } else {
+      el.classList.remove('current');
+    }
+    var degrees = 360 / elems.length;
+    el.style.transform = 'rotate('+((i+1) * degrees)+'deg) translate('+(window.innerHeight - (elSize + 10)) / 2+'px) rotate(-'+((i+1) * degrees)+'deg)';
+    elSize = getEmSize(el);
+  });
+  info.style.height = (window.innerHeight - (elSize + 10))+'px';
+  info.style.width = (window.innerHeight - (elSize + 10))+'px';
+
+  var player = new YT.Player("player", {
+      videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
+      loop: true,
+      playerVars: {
+        autoplay: 0,
+        loop: 0,
+        start: 0,
+      },
+      events: {
+          onReady: function (e) {
+            var duration = e.target.getDuration();
+            if(radio.time == 0) {
+              duration = Math.floor(Math.random()*duration);
+            } else {
+              duration = radio.time;
+            }
+            e.target.seekTo(duration);
+            e.target.playVideo();
+          },
+          onStateChange: function (event) {
+            radio.time = Math.floor(event.target.getCurrentTime());
+            if (event.data === 1) {
+                // info.innerHTML = "video started playing";
+            }
+            if (event.data === 0) {
+              current = klassic[Math.floor(Math.random()*radio.music.length)];
+              radio.current = current;
+              event.target.loadVideoById(current);
+              event.target.playVideo();
+            }
+          }
+      }
+  });
+  // you can do more stuff with the player variable
+}
+function changeStation(station) {
+  player.remove();
+  var p = document.createElement('div');
+  p.setAttribute("id", "player");
+  p.style.width = (window.innerHeight - (200 + (elSize + 10))) + 'px';
+  p.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 9) + 'px';
+
+  document.body.insertBefore(p, document.body.childNodes[0]);
+  testing(radios[station.getAttribute("station")]);
+}
+function onYouTubePlayerAPIReady() {
+  testing(radio);
+}
+function getEmSize(el) {
+  return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
+}
+</script>
+</body>
+</html>
