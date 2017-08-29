@@ -89,6 +89,7 @@ function testing(radio) {
               radio.time += time;
               duration = radio.time;
             }
+            time = 0;
             e.target.seekTo(duration);
             e.target.playVideo();
           },
