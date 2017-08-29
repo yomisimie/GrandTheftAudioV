@@ -106,13 +106,13 @@ function testing(radio) {
   });
   // you can do more stuff with the player variable
 }
+player.addEventListener(YT.PlayerState.PLAYING, function(e){
+  console.log(e);
+});
 function changeStation(station) {
   player.pauseVideo();
-  var dom = document;
-  setTimeout(function(){
-    var elem = dom.getElementById('player');
-    elem.parentNode.removeChild(elem);
-  }, 100);
+  var elem = dom.getElementById('player');
+  elem.parentNode.removeChild(elem);
 
   var p = document.createElement('div');
   p.setAttribute("id", "player");
