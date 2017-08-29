@@ -64,7 +64,7 @@ function playSong(radio) {
   $.ajax({
     type: 'GET',
     url: 'radios/West Coast Classics.json',
-    data: {radio:'radio'},
+    datatype: 'json',
     success: function(data) {
       // GET RANDOM SONG
       console.log(data);
