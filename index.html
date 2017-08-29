@@ -103,7 +103,9 @@ function testing(radio) {
               event.target.playVideo();
             }
             if (event.data === 2) {
-              event.target.remove();
+              var elem = document.getElementById('player');
+              elem.parentNode.removeChild(elem);
+              return false;
             }
           }
       }
