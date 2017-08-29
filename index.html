@@ -69,11 +69,11 @@ function playSong(radio) {
       radio.music = data.songs;
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
-        console.log(current);
-        radio.current = current.song;
+        radio.current = current;
       } else {
         current = radio.current;
       }
+      console.log(current);
 
       // ARRANGE ELEMENTS
       var elems = document.querySelectorAll("#info span");
@@ -131,7 +131,7 @@ function getEmSize(el) {
 function playYoutube(current,radio) {
 
   player = new YT.Player("player", {
-    videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
+    videoId: current.song, // this is the id of the video at youtube (the stuff after "?v=")
     loop: true,
     playerVars: {
       autoplay: 0,
@@ -163,7 +163,7 @@ function playYoutube(current,radio) {
         if (event.data === 0) {
           current = radio.music[Math.floor(Math.random()*radio.music.length)];
           radio.current = current;
-          event.target.loadVideoById(current);
+          event.target.loadVideoById(current.song);
           event.target.playVideo();
         }
       }
