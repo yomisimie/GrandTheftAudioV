@@ -20,6 +20,13 @@ divPlayer.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 
 info.style.height = (window.innerHeight - (elSize + 10))+'px';
 info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
+var audio = document.createElement("audio");
+audio.src = "intro/wcc/t8WHDsx306Y.wav";
+audio.addEventListener("ended", function () {
+    document.removeChild(this);
+}, false);
+audio.play();
+
 var blaine = {music: ["zuFmZbNesV0"], current: "", time: 0, name: 'Blaine County Radio', image: 'radio/blaine.png'};
 var blue_ark = {music: ["zuFmZbNesV0"], current: "", time: 0, name: 'Blue Ark', image: 'radio/blue_ark.png'};
 var channel_x = {music: ["zuFmZbNesV0"], current: "", time: 0, name: 'Channel X', image: 'radio/channel_x.png'};
