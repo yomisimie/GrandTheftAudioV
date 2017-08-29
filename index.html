@@ -101,11 +101,6 @@ function testing(radio) {
               event.target.loadVideoById(current);
               event.target.playVideo();
             }
-            if (event.data === 2) {
-              var elem = document.getElementById('player');
-              console.log(elem);
-              elem.parentNode.removeChild(elem);
-            }
           }
       }
   });
@@ -113,6 +108,9 @@ function testing(radio) {
 }
 function changeStation(station) {
   player.pauseVideo();
+  var elem = document.getElementById('player');
+  elem.parentNode.removeChild(elem);
+
   var p = document.createElement('div');
   p.setAttribute("id", "player");
   p.style.width = (window.innerHeight - (200 + (elSize + 10))) + 'px';
