@@ -91,6 +91,7 @@ function testing(radio) {
         events: {
           onReady: function (e) {
             var duration = e.target.getDuration();
+            console.log(radio.time);
             if(radio.time == 0) {
               duration = Math.floor(Math.random()*duration);
             } else {
@@ -101,7 +102,6 @@ function testing(radio) {
                 duration = radio.time;
               }
             }
-            console.log(time);
             time = 0;
             e.target.seekTo(duration);
             e.target.playVideo();
@@ -110,7 +110,6 @@ function testing(radio) {
             radio.time = Math.floor(event.target.getCurrentTime());
             if (event.data === 1) {
               // info.innerHTML = "video started playing";
-              console.log(time);
             }
             if (event.data === 0) {
               current = radio.music[Math.floor(Math.random()*radio.music.length)];
