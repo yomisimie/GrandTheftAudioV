@@ -52,8 +52,10 @@ info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function testing(radio) {
-  radio.music = readTextFile('radios/'+radio.name+'.txt')
-  console.log(radio.music);
+  if(readTextFile('radios/'+radio.name+'.txt') !== '') {
+    radio.music = readTextFile('radios/'+radio.name+'.txt');
+    console.log(radio.music);
+  }
 
   if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
     var current = radio.music[Math.floor(Math.random()*radio.music.length)];
