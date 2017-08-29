@@ -106,7 +106,7 @@ function testing(radio) {
   });
   // you can do more stuff with the player variable
 }
-function changeStation(station) {
+function changeStation(station, $ = 'jQuery') {
   player.pauseVideo();
   $('#player').remove();
   var p = document.createElement('div');
