@@ -91,7 +91,6 @@ function testing(radio) {
             e.target.playVideo();
           },
           onStateChange: function (event) {
-            console.log(event.data);
             radio.time = Math.floor(event.target.getCurrentTime());
             if (event.data === 1) {
                 // info.innerHTML = "video started playing";
@@ -104,6 +103,7 @@ function testing(radio) {
             }
             if (event.data === 2) {
               var elem = document.getElementById('player');
+              console.log(elem);
               elem.parentNode.removeChild(elem);
             }
           }
