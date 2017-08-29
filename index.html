@@ -65,7 +65,7 @@ function playSong(radio) {
     type: 'GET',
     url: 'radios/West Coast Classics.txt',
     data: {radio:'radio'},
-    datatype: json,
+    datatype: jsonp,
     success: function(data) {
       // GET RANDOM SONG
       radio.music = data;
