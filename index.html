@@ -55,7 +55,7 @@ var radio = radios[Math.floor(Math.random() * radios.length)];
 function testing(radio) {
   $.ajax(function(){
     type: 'GET',
-    url: 'radios/'+radio.name+'.txt',
+    url: 'radios/West Coast Classics.txt',
     success: function(data) {
       console.log(data);
     }
