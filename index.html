@@ -75,9 +75,14 @@ function testing(radio) {
       }
 
       var mySound = soundManager.createSound({
-        url: 'intro/'+radio.name+'/'+current+'.mp3',
+        url: 'intro/West Coast Classics/t8WHDsx306Y.mp3',
+        // url: 'intro/'+radio.name+'/'+current+'.mp3',
+        onload: function() {
+          return false;
+        },
         onfinish: function() {
-          console.log(done);
+            this.destruct();
+            return true;
         }
       });
 
