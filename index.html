@@ -65,9 +65,10 @@ function playSong(radio) {
     type: 'GET',
     url: 'radios/West Coast Classics.txt',
     data: {radio:'radio'},
+    datatype: json,
     success: function(data) {
       // GET RANDOM SONG
-      radio.music = data.split(',');
+      radio.music = data;
       console.log(radio.music);
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
