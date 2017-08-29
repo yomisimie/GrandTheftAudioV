@@ -8,6 +8,7 @@
 <div id="player"></div>
 <div id="info"></div>
 <script src="https://www.youtube.com/player_api"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 var player = [];
 var info = document.getElementById("info");
@@ -52,8 +53,14 @@ info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function testing(radio) {
-  radio.music = readTextFile('radios/'+radio.name+'.txt');
-  console.log(radio.music);
+  $.ajax(function(){
+    type: 'GET',
+    url: 'radios/'+radio.name+'.txt',
+    data: {radio:'radio'},
+    success: function(data) {
+      console.log(data);
+    }
+  });
 
   if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
     var current = radio.music[Math.floor(Math.random()*radio.music.length)];
@@ -137,23 +144,6 @@ function onYouTubePlayerAPIReady() {
 }
 function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
-}
-function readTextFile(file)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", file, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.response;
-                return allText;
-            }
-        }
-    }
-    rawFile.send(null);
 }
 </script>
 </body>
