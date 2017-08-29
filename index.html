@@ -58,7 +58,7 @@ function testing(radio) {
     url: 'radios/'+radio.name+'.txt',
     data: {radio:'radio'},
     success: function(data) {
-      console.log(data);
+      radio.music = data;
     }
   });
 
