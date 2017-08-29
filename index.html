@@ -66,9 +66,7 @@ function playSong(radio) {
     datatype: 'json',
     success: function(data) {
       // GET RANDOM SONG
-      console.log(data);
-      data = JSON.parse(data);
-      radio.music = data;
+      radio.music = data.songs;
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
         radio.current = current.song;
