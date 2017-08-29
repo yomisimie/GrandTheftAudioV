@@ -69,6 +69,7 @@ function playSong(radio) {
       radio.music = data.songs;
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
+        console.log(current);
         radio.current = current.song;
       } else {
         current = radio.current;
