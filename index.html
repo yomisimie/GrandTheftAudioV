@@ -7,9 +7,9 @@
 <body>
 <div id="player"></div>
 <div id="info"></div>
-<audio src="intro/wcc/t8WHDsx306Y.mp3"></audio>
 <script src="https://www.youtube.com/player_api"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="soundmanager2.js"></script>
 <script>
 var player = [];
 var info = document.getElementById("info");
@@ -21,8 +21,10 @@ divPlayer.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 
 info.style.height = (window.innerHeight - (elSize + 10))+'px';
 info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
-var audio = new Audio("intro/wcc/t8WHDsx306Y.mp3" );
-audio.play();
+var mySound = soundManager.createSound({
+  url: 'intro/wcc/t8WHDsx306Y.mp3'
+});
+
 
 // var audio = document.createElement("audio");
 // audio.src = "intro/wcc/t8WHDsx306Y.mp3";
