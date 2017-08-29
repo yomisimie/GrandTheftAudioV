@@ -51,9 +51,9 @@ for(var i in radios) {
 info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
-readTextFile('radios/'+radio.name+'.txt')
-
 function testing(radio) {
+  readTextFile('radios/'+radio.name+'.txt')
+  
   if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
     var current = radio.music[Math.floor(Math.random()*radio.music.length)];
     radio.current = current;
