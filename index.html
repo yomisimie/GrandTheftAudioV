@@ -101,15 +101,16 @@ function testing(radio) {
                 duration = radio.time;
               }
             }
+            console.log(time);
             time = 0;
             e.target.seekTo(duration);
             e.target.playVideo();
-            console.log(time);
           },
           onStateChange: function (event) {
             radio.time = Math.floor(event.target.getCurrentTime());
             if (event.data === 1) {
               // info.innerHTML = "video started playing";
+              console.log(time);
             }
             if (event.data === 0) {
               current = radio.music[Math.floor(Math.random()*radio.music.length)];
