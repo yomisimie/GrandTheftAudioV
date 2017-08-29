@@ -91,7 +91,7 @@ function testing(radio) {
             e.target.playVideo();
           },
           onStateChange: function (event) {
-            console.log(event.target.getCurrentTime());
+            console.log(event.data);
             radio.time = Math.floor(event.target.getCurrentTime());
             if (event.data === 1) {
                 // info.innerHTML = "video started playing";
