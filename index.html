@@ -58,7 +58,7 @@ function testing(radio) {
     url: 'radios/'+radio.name+'.txt',
     data: {radio:'radio'},
     success: function(data) {
-      radio.music = data;
+      radio.music = data.split(',');
       console.log(radio.music);
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
