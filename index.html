@@ -89,6 +89,7 @@ function playSong(radio) {
       info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
       // CALL INTRO
+      console.log(radio.time);
       if(radio.time == 0) {
         var mySound = soundManager.createSound({
           url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
@@ -159,6 +160,9 @@ function playYoutube(current,radio) {
       },
       onStateChange: function (event) {
         radio.time = Math.floor(event.target.getCurrentTime());
+        if(event.target.getCurrentTime() == event.target.getDuration()) {
+          radio.time = 0;
+        }
         if (event.data === 1) {
           // info.innerHTML = "video started playing";
         }
