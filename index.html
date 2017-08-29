@@ -108,8 +108,10 @@ function testing(radio) {
 }
 function changeStation(station) {
   player.pauseVideo();
-  var elem = document.getElementById('player');
-  elem.parentNode.removeChild(elem);
+  setTimeout(function(){
+    var elem = document.getElementById('player');
+    elem.parentNode.removeChild(elem);
+  }, 100);
 
   var p = document.createElement('div');
   p.setAttribute("id", "player");
