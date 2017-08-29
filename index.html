@@ -56,7 +56,6 @@ function testing(radio) {
   $.ajax(function(){
     type: 'GET',
     url: 'radios/'+radio.name+'.txt',
-    data: {radio:'radio'},
     success: function(data) {
       console.log(data);
     }
