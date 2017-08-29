@@ -59,6 +59,7 @@ function testing(radio) {
     data: {radio:'radio'},
     success: function(data) {
       radio.music = data;
+      console.log(radio.music);
       if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
         radio.current = current;
