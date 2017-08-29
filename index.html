@@ -58,6 +58,7 @@ function testing(radio) {
   } else {
     current = radio.current;
   }
+  console.log(current);
   var elems = document.querySelectorAll("#info span");
   [].forEach.call(elems, function(el, i) {
     if(el.title == radio.name) {
@@ -102,7 +103,7 @@ function testing(radio) {
                 // info.innerHTML = "video started playing";
             }
             if (event.data === 0) {
-              current = klassic[Math.floor(Math.random()*radio.music.length)];
+              current = radio.music[Math.floor(Math.random()*radio.music.length)];
               radio.current = current;
               event.target.loadVideoById(current);
               event.target.playVideo();
