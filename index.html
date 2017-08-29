@@ -63,7 +63,7 @@ var radio = radios[Math.floor(Math.random() * radios.length)];
 function playSong(radio) {
   $.ajax({
     type: 'GET',
-    url: 'radios/West Coast Classics.txt',
+    url: 'radios/West Coast Classics.json',
     data: {radio:'radio'},
     success: function(data) {
       // GET RANDOM SONG
