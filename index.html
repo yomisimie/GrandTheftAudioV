@@ -106,9 +106,12 @@ function testing(radio) {
   });
   // you can do more stuff with the player variable
 }
+var intval = setInterval(function(){
+  radio.time += 1;
+}, 1000);
 function changeStation(station) {
   // player.pauseVideo();
-  var elem = dom.getElementById('player');
+  var elem = document.getElementById('player');
   elem.parentNode.removeChild(elem);
 
   var p = document.createElement('div');
