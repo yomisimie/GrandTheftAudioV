@@ -19,7 +19,7 @@ divPlayer.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 
 info.style.height = (window.innerHeight - (elSize + 10))+'px';
 info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
-var blue_ark = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Blue Ark', image: 'radio/blue_ark.png'};
+var blue_ark = {music: ["ldnt6mazGno", "dshV1Cadm3Q", "s1wWxLcC8U4", "CcgBgCNZiVU", "APjo-VLKTRo", "uLkT22MVuEk", "FXcGwGANuDQ"], current: "", time: 0, name: 'Blue Ark', image: 'radio/blue_ark.png'};
 var blaine = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Blaine County Radio', image: 'radio/blaine.png'};
 var channel_x = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Channel X', image: 'radio/channel_x.png'};
 var east_los = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'East Los FM', image: 'radio/east_los.png'};
@@ -33,7 +33,7 @@ var rebel = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM",
 var soulwax = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Soulwax FM', image: 'radio/soulwax.png'};
 var space = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Space 103.2', image: 'radio/space.png'};
 var vinewood = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'Vinewood Boulevard Radio', image: 'radio/vinewood.png'};
-var wcc = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'West Coast Classics', image: 'radio/wcc.png'};
+var wcc = {music: [], current: "", time: 0, name: 'West Coast Classics', image: 'radio/wcc.png'};
 var wctr = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'WCTR', image: 'radio/wctr.png'};
 var www = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'WorldWide FM', image: 'radio/www.png'};
 var the_lab = {music: ["zuFmZbNesV0", "3HG39dVeU4c", "_CL6n0FJZpk", "84PK9dEiOhM", "SlMO4lf5IOI", "7O3wG1nw3c0", "FXcGwGANuDQ"], current: "", time: 0, name: 'The Lab', image: 'radio/the_lab.png'};
@@ -50,6 +50,11 @@ for(var i in radios) {
 }
 info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
+
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'radios/'+radio.name+'.txt');
+xhr.send();
+console.log(xhr.responseText);
 
 function testing(radio) {
   if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
