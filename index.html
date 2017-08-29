@@ -104,6 +104,7 @@ function testing(radio) {
             time = 0;
             e.target.seekTo(duration);
             e.target.playVideo();
+            console.log(time);
           },
           onStateChange: function (event) {
             radio.time = Math.floor(event.target.getCurrentTime());
