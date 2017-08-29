@@ -60,7 +60,7 @@ for(var i in radios) {
 info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
-function testing(radio) {
+function playSong(radio) {
   $.ajax({
     type: 'GET',
     url: 'radios/'+radio.name+'.txt',
@@ -76,73 +76,16 @@ function testing(radio) {
 
       var mySound = soundManager.createSound({
         url: 'intro/West Coast Classics/t8WHDsx306Y.mp3',
+        autoPlay: true,
+        autoLoad: true,
         // url: 'intro/'+radio.name+'/'+current+'.mp3',
-        onload: function() {
-          return false;
-        },
         onfinish: function() {
-            this.destruct();
-            return true;
+          this.destruct();
+          playYoutube(current,radio);
         }
       });
-
-      var elems = document.querySelectorAll("#info span");
-      [].forEach.call(elems, function(el, i) {
-        if(el.title == radio.name) {
-          el.classList.add('current');
-        } else {
-          el.classList.remove('current');
-        }
-        var degrees = 360 / elems.length;
-        el.style.transform = 'rotate('+((i+1) * degrees)+'deg) translate('+(window.innerHeight - (elSize + 10)) / 2+'px) rotate(-'+((i+1) * degrees)+'deg)';
-        elSize = getEmSize(el);
-      });
-      info.style.height = (window.innerHeight - (elSize + 10))+'px';
-      info.style.width = (window.innerHeight - (elSize + 10))+'px';
-
-      player = new YT.Player("player", {
-        videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
-        loop: true,
-        playerVars: {
-          autoplay: 0,
-          loop: 0,
-          start: 0,
-        },
-        events: {
-          onReady: function (e) {
-            var duration = e.target.getDuration();
-            if(radio.time == 0) {
-              duration = Math.floor(Math.random()*duration);
-            } else {
-              radio.time += time;
-              if(radio.time >= e.target.getDuration()) {
-                duration = (e.target.getDuration() - 1);
-              } else {
-                duration = radio.time;
-              }
-            }
-            time = 0;
-            e.target.seekTo(duration);
-            e.target.playVideo();
-          },
-          onStateChange: function (event) {
-            radio.time = Math.floor(event.target.getCurrentTime());
-            if (event.data === 1) {
-              // info.innerHTML = "video started playing";
-            }
-            if (event.data === 0) {
-              current = radio.music[Math.floor(Math.random()*radio.music.length)];
-              radio.current = current;
-              event.target.loadVideoById(current);
-              event.target.playVideo();
-            }
-          }
-        }
-      });
-      // you can do more stuff with the player variable
     }
   });
-
 }
 var intval = setInterval(function(){
   time++;
@@ -158,13 +101,68 @@ function changeStation(station) {
   p.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 9) + 'px';
 
   document.body.insertBefore(p, document.body.childNodes[0]);
-  testing(radios[station.getAttribute("station")]);
+  playSong(radios[station.getAttribute("station")]);
 }
 function onYouTubePlayerAPIReady() {
-  testing(radio);
+  playSong(radio);
 }
 function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
+}
+function playYoutube(current,radio) {
+  var elems = document.querySelectorAll("#info span");
+  [].forEach.call(elems, function(el, i) {
+    if(el.title == radio.name) {
+      el.classList.add('current');
+    } else {
+      el.classList.remove('current');
+    }
+    var degrees = 360 / elems.length;
+    el.style.transform = 'rotate('+((i+1) * degrees)+'deg) translate('+(window.innerHeight - (elSize + 10)) / 2+'px) rotate(-'+((i+1) * degrees)+'deg)';
+    elSize = getEmSize(el);
+  });
+  info.style.height = (window.innerHeight - (elSize + 10))+'px';
+  info.style.width = (window.innerHeight - (elSize + 10))+'px';
+
+  player = new YT.Player("player", {
+    videoId: current, // this is the id of the video at youtube (the stuff after "?v=")
+    loop: true,
+    playerVars: {
+      autoplay: 0,
+      loop: 0,
+      start: 0,
+    },
+    events: {
+      onReady: function (e) {
+        var duration = e.target.getDuration();
+        if(radio.time == 0) {
+          duration = Math.floor(Math.random()*duration);
+        } else {
+          radio.time += time;
+          if(radio.time >= e.target.getDuration()) {
+            duration = (e.target.getDuration() - 1);
+          } else {
+            duration = radio.time;
+          }
+        }
+        time = 0;
+        e.target.seekTo(duration);
+        e.target.playVideo();
+      },
+      onStateChange: function (event) {
+        radio.time = Math.floor(event.target.getCurrentTime());
+        if (event.data === 1) {
+          // info.innerHTML = "video started playing";
+        }
+        if (event.data === 0) {
+          current = radio.music[Math.floor(Math.random()*radio.music.length)];
+          radio.current = current;
+          event.target.loadVideoById(current);
+          event.target.playVideo();
+        }
+      }
+    }
+  });
 }
 </script>
 </body>
