@@ -108,9 +108,13 @@ function testing(radio) {
   // you can do more stuff with the player variable
 }
 function changeStation(station) {
-  player.pauseVideo(function(e){
-    console.log(e);
-  });
+  player.pauseVideo();
+  setTimeout(function(){
+    player.playVideo();
+    setTimeout(function(){
+      player.remove();
+    }, 50);
+  }, 50);
   var p = document.createElement('div');
   p.setAttribute("id", "player");
   p.style.width = (window.innerHeight - (200 + (elSize + 10))) + 'px';
