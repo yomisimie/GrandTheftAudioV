@@ -89,7 +89,6 @@ function playSong(radio) {
       info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
       // CALL INTRO
-      console.log(radio.time);
       if(radio.time == 0) {
         var mySound = soundManager.createSound({
           url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
@@ -132,7 +131,6 @@ function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
 }
 function playYoutube(current,radio) {
-
   player = new YT.Player("player", {
     videoId: current.song, // this is the id of the video at youtube (the stuff after "?v=")
     loop: true,
