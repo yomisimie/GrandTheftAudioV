@@ -91,7 +91,7 @@ function playSong(radio) {
 
       // CALL INTRO
       var mySound = soundManager.createSound({
-        url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
+        url: 'intro/'+radio.name+'/'+current.intro[Math.floor(Math.random()*current.intro.length)],
         autoPlay: true,
         autoLoad: true,
         // url: 'intro/'+radio.name+'/'+current+'.mp3',
