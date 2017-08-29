@@ -83,11 +83,16 @@ function testing(radio) {
       events: {
           onReady: function (e) {
             var duration = e.target.getDuration();
+            console.log(duration);
             if(radio.time == 0) {
               duration = Math.floor(Math.random()*duration);
             } else {
               radio.time += time;
-              duration = radio.time;
+              if(radio.time >= e.target.getDuration()) {
+                duration = (e.target.getDuration() - 1);
+              } else {
+                duration = radio.time;
+              }
             }
             time = 0;
             e.target.seekTo(duration);
