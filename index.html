@@ -67,14 +67,12 @@ function playSong(radio) {
     success: function(data) {
       // GET RANDOM SONG
       radio.music = data.songs;
-      if(radio.current == undefined || radio.current == 'undefined' || radio.current == '' || radio.next == 1) {
+      if((radio.current == undefined || radio.current == 'undefined' || radio.current == '') || radio.next === 1) {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
         radio.current = current;
       } else {
         current = radio.current;
       }
-      console.log(current);
-      console.log(radio.current);
       // ARRANGE ELEMENTS
       var elems = document.querySelectorAll("#info span");
       [].forEach.call(elems, function(el, i) {
