@@ -61,13 +61,14 @@ info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function playSong(radio) {
+  console.log(radio);
   $.ajax({
     url: 'radios/West Coast Classics.json',
     datatype: 'json',
     success: function(data) {
       // GET RANDOM SONG
       radio.music = data.songs;
-      if(radio.current == undefined || radio.current == 'undefined' || radio.current == '') {
+      if(radio.current == undefined || radio.current == 'undefined' || radio.current == '' || radio.next == 1) {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
         radio.current = current;
       } else {
@@ -157,7 +158,6 @@ function playYoutube(current,radio) {
         e.target.playVideo();
       },
       onStateChange: function (event) {
-        console.log(event.data);
         radio.time = Math.floor(event.target.getCurrentTime());
         if(event.target.getCurrentTime() == event.target.getDuration()) {
           radio.time = 0;
@@ -166,6 +166,7 @@ function playYoutube(current,radio) {
           // info.innerHTML = "video started playing";
         }
         if (event.data === 0) {
+          radio.next = 1;
           playSong(radio);
         }
       }
