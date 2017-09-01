@@ -61,7 +61,6 @@ info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function playSong(radio) {
-  console.log(radio);
   $.ajax({
     url: 'radios/West Coast Classics.json',
     datatype: 'json',
@@ -74,6 +73,8 @@ function playSong(radio) {
       } else {
         current = radio.current;
       }
+      console.log(current);
+      console.log(radio.current);
       // ARRANGE ELEMENTS
       var elems = document.querySelectorAll("#info span");
       [].forEach.call(elems, function(el, i) {
