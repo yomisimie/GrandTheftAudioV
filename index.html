@@ -157,6 +157,7 @@ function playYoutube(current,radio) {
         e.target.playVideo();
       },
       onStateChange: function (event) {
+        console.log(event.data);
         radio.time = Math.floor(event.target.getCurrentTime());
         if(event.target.getCurrentTime() == event.target.getDuration()) {
           radio.time = 0;
