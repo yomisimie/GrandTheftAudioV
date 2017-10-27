@@ -134,7 +134,7 @@ function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
 }
 function playYoutube(current,radio) {
-  document.getElementById( "title" ).innerText = current.artist+': '.current.name;
+  document.getElementById( "title" ).innerText = current.artist+': '+current.name;
   player = new YT.Player("player", {
     videoId: current.song, // this is the id of the video at youtube (the stuff after "?v=")
     playerVars: {
