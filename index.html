@@ -126,7 +126,7 @@ function changeStation(station) {
   playSong(radios[station.getAttribute("station")]);
 }
 function onYouTubePlayerAPIReady() {
-  playSong(radio, false);
+  playSong(radio, true);
 }
 function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
@@ -154,9 +154,9 @@ function playYoutube(current,radio) {
           } else {
             duration = radio.time;
           }
+          e.target.seekTo(duration);
         }
         time = 0;
-        e.target.seekTo(duration);
         e.target.playVideo();
       },
       onStateChange: function (event) {
