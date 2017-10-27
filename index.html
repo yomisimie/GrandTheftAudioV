@@ -127,7 +127,7 @@ function changeStation(station) {
   p.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 9) + 'px';
 
   document.body.insertBefore(p, document.body.childNodes[0]);
-  playSong(radios[station.getAttribute("station")]);
+  playSong(radios[station.getAttribute("station")],false);
 }
 function onYouTubePlayerAPIReady() {
   playSong(radio, true);
