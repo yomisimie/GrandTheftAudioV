@@ -55,6 +55,7 @@
   font-size: 22px;
   text-align: center;
   margin: 0 0 5px;
+  top: 220px;
   left: 50%;
   transform: translateX(-50%) translateY(-100%);
 }
