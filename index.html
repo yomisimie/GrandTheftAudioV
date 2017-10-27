@@ -177,18 +177,7 @@ function playYoutube(current,radio) {
       }
     }
   });
-  player.addEventListener('onStateChange', 'onPlayerStateChange');
-}
-function onPlayerStateChange( event ) {
-  if (player.getPlayerState() == 1) {
-    var title;
-    switch (current) {
-      case "West Coast Classics":
-        title = player.getVideoData().title.replace("GTA V [West Coast Classics] ","");
-        break;
-    }
-    document.getElementById( "title" ).innerText = title;
-  }
+  document.getElementById( "title" ).innerText = current.artist+': '.current.name;
 }
 </script>
 </body>
