@@ -50,6 +50,7 @@
   z-index: 10;
 }
 #title {
+  position: absolute;
   font-family: SignPainter;
   font-size: 22px;
   text-align: center;
