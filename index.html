@@ -120,7 +120,8 @@ function changeStation(station) {
   elem.parentNode.removeChild(elem);
 
   var p = $('.player-container').append('<div/>');
-  p.setAttribute("id", "player");
+  p.attr("id", "player");
+  p = document.getElementById("player");
   p.style.width = (window.innerHeight - (200 + (elSize + 10))) + 'px';
   p.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 9) + 'px';
 
