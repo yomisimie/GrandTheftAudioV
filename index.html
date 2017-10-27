@@ -116,8 +116,7 @@ var intval = setInterval(function(){
 }, 1000);
 function changeStation(station) {
   // player.pauseVideo();
-  var elem = document.getElementById('player');
-  elem.parentNode.removeChild(elem);
+  $('#player').remove();
 
   var p = $('.player-container').append('<div/>');
   p.attr("id", "player");
