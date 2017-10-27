@@ -133,11 +133,14 @@ function getEmSize(el) {
 function playYoutube(current,radio) {
   player = new YT.Player("player", {
     videoId: current.song, // this is the id of the video at youtube (the stuff after "?v=")
-    loop: true,
     playerVars: {
-      autoplay: 0,
-      loop: 0,
-      start: 0,
+      'autoplay': 1,
+      'controls': 0,
+      'autohide': 1,
+      'showinfo' : 0, // <- This part here
+      'wmode': 'opaque',
+      'rel': 0,
+      'loop': 1
     },
     events: {
       onReady: function (e) {
