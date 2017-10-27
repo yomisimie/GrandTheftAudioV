@@ -5,7 +5,7 @@
     <link href="style.css" rel="stylesheet" />
   </head>
 <body>
-<h3 id="title"></h3>
+<h3 id="title">Los Santos Radios</h3>
 <div id="player"></div>
 <div id="info"></div>
 <script src="https://www.youtube.com/player_api"></script>
@@ -89,8 +89,12 @@ function playSong(radio,intro=true) {
       info.style.height = (window.innerHeight - (elSize + 10))+'px';
       info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
+      // CHANGE TITLE
+      document.getElementById( "title" ).innerText = current.artist+': '+current.name;
+
       // CALL INTRO
       if(radio.time == 0 && intro == true) {
+        playYoutube(current,radio);
         var mySound = soundManager.createSound({
           url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
           autoPlay: true,
@@ -100,7 +104,7 @@ function playSong(radio,intro=true) {
             // DESTROY AUDIO
             this.destruct();
             // PLAY YOUTUBE
-            playYoutube(current,radio);
+            justplay();
           }
         });
       } else {
@@ -132,7 +136,6 @@ function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
 }
 function playYoutube(current,radio) {
-  document.getElementById( "title" ).innerText = current.artist+': '+current.name;
   player = new YT.Player("player", {
     videoId: current.song, // this is the id of the video at youtube (the stuff after "?v=")
     playerVars: {
@@ -157,7 +160,7 @@ function playYoutube(current,radio) {
           e.target.seekTo(duration);
         }
         time = 0;
-        e.target.playVideo();
+        // e.target.playVideo();
       },
       onStateChange: function (event) {
         radio.time = Math.floor(event.target.getCurrentTime());
@@ -173,6 +176,9 @@ function playYoutube(current,radio) {
       }
     }
   });
+}
+function justplay() {
+  player.playVideo();
 }
 </script>
 </body>
