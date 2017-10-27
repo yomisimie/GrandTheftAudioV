@@ -5,6 +5,7 @@
     <link href="style.css" rel="stylesheet" />
   </head>
 <body>
+<h3 id="title"></h3>
 <div id="player"></div>
 <div id="info"></div>
 <script src="https://www.youtube.com/player_api"></script>
@@ -173,7 +174,12 @@ function playYoutube(current,radio) {
       }
     }
   });
-  console.log(player.getVideoData());
+  player.addEventListener('onStateChange', 'onPlayerStateChange');
+}
+function onPlayerStateChange( event ) {
+  if (player.getPlayerState() == 1) {
+    document.getElementById( "title" ).innerText = player.getVideoData().title;
+  }
 }
 </script>
 </body>
