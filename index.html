@@ -134,6 +134,7 @@ function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
 }
 function playYoutube(current,radio) {
+  console.log(current);
   player = new YT.Player("player", {
     videoId: current.song, // this is the id of the video at youtube (the stuff after "?v=")
     playerVars: {
@@ -180,7 +181,13 @@ function playYoutube(current,radio) {
 }
 function onPlayerStateChange( event ) {
   if (player.getPlayerState() == 1) {
-    document.getElementById( "title" ).innerText = player.getVideoData().title.replace("GTA V [West Coast Classics] ","");
+    var title;
+    switch (current) {
+      case "West Coast Classics":
+        title = player.getVideoData().title.replace("GTA V [West Coast Classics] ","");
+        break;
+    }
+    document.getElementById( "title" ).innerText = title;
   }
 }
 </script>
