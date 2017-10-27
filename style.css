@@ -1,3 +1,4 @@
+@import "SignPainter.css";
 #info {
   border-radius: 100%;
   position: absolute;
@@ -47,4 +48,7 @@
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   z-index: 10;
+}
+#title {
+  font-family: SignPainter;
 }
