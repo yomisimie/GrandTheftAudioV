@@ -180,7 +180,7 @@ function playYoutube(current,radio) {
 }
 function onPlayerStateChange( event ) {
   if (player.getPlayerState() == 1) {
-    document.getElementById( "title" ).innerText = player.getVideoData().title;
+    document.getElementById( "title" ).innerText = player.getVideoData().title.replace("GTA V [West Coast Classics] ","");
   }
 }
 </script>
