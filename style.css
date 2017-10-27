@@ -42,7 +42,7 @@
   opacity: 1;
   background: rgba(0, 0, 0, 0.75);
 }
-.player-container {
+#player {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -55,5 +55,5 @@
   text-align: center;
   margin: 0 0 5px;
   left: 50%;
-  transform: translateX(-50%) translateY(-110%);
+  transform: translateX(-50%) translateY(-100%);
 }
