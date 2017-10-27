@@ -173,6 +173,13 @@ function playYoutube(current,radio) {
       }
     }
   });
+  player.addEventListener('onStateChange', 'onPlayerStateChange');
+}
+function onPlayerStateChange( event ) {
+  console.log(player.getPlayerState())
+  if (player.getPlayerState() == 1) {
+    document.getElementById( "title" ).innerText = player.getVideoData().title;
+  }
 }
 </script>
 </body>
