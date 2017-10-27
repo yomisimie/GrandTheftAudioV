@@ -123,8 +123,7 @@ function changeStation(station) {
   p.style.height = (((window.innerHeight - (200 + (elSize + 10))) / 16) * 9) + 'px';
 
   var title = document.getElementById('title');
-  console.log(p.offsetTop);
-  title.style.top = p.offsetTop + 'px';
+  title.style.top = (window.innerHeight - (200 + (elSize + 10))) + 'px';
 
   document.body.insertBefore(p, document.body.childNodes[0]);
   playSong(radios[station.getAttribute("station")]);
