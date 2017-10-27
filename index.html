@@ -61,7 +61,7 @@ for(var i in radios) {
 info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
 
-function playSong(radio) {
+function playSong(radio,intro=true) {
   $.ajax({
     url: 'radios/West Coast Classics.json',
     datatype: 'json',
@@ -90,7 +90,7 @@ function playSong(radio) {
       info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
       // CALL INTRO
-      if(radio.time == 0) {
+      if(radio.time == 0 && intro == true) {
         var mySound = soundManager.createSound({
           url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
           autoPlay: true,
@@ -126,7 +126,7 @@ function changeStation(station) {
   playSong(radios[station.getAttribute("station")]);
 }
 function onYouTubePlayerAPIReady() {
-  playSong(radio);
+  playSong(radio, false);
 }
 function getEmSize(el) {
   return Number(getComputedStyle(el, "").width.match(/(\d+)px/)[1]);
@@ -160,7 +160,6 @@ function playYoutube(current,radio) {
         e.target.playVideo();
       },
       onStateChange: function (event) {
-        console.log(event.data);
         radio.time = Math.floor(event.target.getCurrentTime());
         if(event.target.getCurrentTime() == event.target.getDuration()) {
           radio.time = 0;
@@ -169,7 +168,7 @@ function playYoutube(current,radio) {
           // info.innerHTML = "video started playing";
         }
         if (event.data === 0) {
-          // playSong(radio);
+          playSong(radio, false);
         }
       }
     }
