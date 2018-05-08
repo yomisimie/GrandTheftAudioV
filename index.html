@@ -61,7 +61,7 @@ for(var i in radios) {
 }
 info.innerHTML = stations;
 var radio = radios[Math.floor(Math.random() * radios.length)];
-
+console.log(radio);
 
 function playSong(radio,intro=true) {
   $.ajax({
