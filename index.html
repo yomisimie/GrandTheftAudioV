@@ -93,6 +93,8 @@ function playSong(radio,intro=true) {
 
       // CHANGE TITLE
       document.getElementById( "title" ).innerText = current.artist+': '+current.name;
+      console.log(current);
+      
 
       // CALL INTRO
       if(radio.time == 0 && intro == true) {
