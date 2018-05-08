@@ -63,7 +63,7 @@ var radio = radios[Math.floor(Math.random() * radios.length)];
 
 function playSong(radio,intro=true) {
   $.ajax({
-    url: 'radios/West Coast Classics.json',
+    url: 'radios/'+radio.name+'.json',
     datatype: 'json',
     success: function(data) {
       // GET RANDOM SONG
@@ -97,7 +97,7 @@ function playSong(radio,intro=true) {
       if(radio.time == 0 && intro == true) {
         playYoutube(current,radio);
         var mySound = soundManager.createSound({
-          url: 'intro/West Coast Classics/'+radio.intros[Math.floor(Math.random() * radio.intros.length)],
+          url: 'intro/' + radio.name +'/'+radio.intros[Math.floor(Math.random() * radio.intros.length)],
           autoPlay: true,
           autoLoad: true,
           // url: 'intro/'+radio.name+'/'+current+'.mp3',
