@@ -224,5 +224,25 @@
         "This DJ/1.mp3"
       ]
     }
+  ],
+  "intros" [
+    "ID_01.mp3",
+    "ID_02.mp3",
+    "ID_03.mp3",
+    "ID_04.mp3",
+    "ID_05.mp3",
+    "ID_06.mp3",
+    "ID_07.mp3",
+    "ID_08.mp3",
+    "ID_09.mp3",
+    "ID_10.mp3",
+    "ID_11.mp3",
+    "ID_12.mp3",
+    "ID_13.mp3",
+    "ID_14.mp3",
+    "ID_15.mp3",
+    "ID_16.mp3",
+    "ID_17.mp3",
+    "ID_18.mp3"
   ]
 }

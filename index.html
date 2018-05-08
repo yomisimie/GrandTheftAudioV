@@ -68,6 +68,7 @@ function playSong(radio,intro=true) {
     success: function(data) {
       // GET RANDOM SONG
       radio.music = data.songs;
+      radio.intros = data.intros;
       if(radio.next === 1) {
         var current = radio.music[Math.floor(Math.random()*radio.music.length)];
         radio.current = current;
@@ -96,7 +97,7 @@ function playSong(radio,intro=true) {
       if(radio.time == 0 && intro == true) {
         playYoutube(current,radio);
         var mySound = soundManager.createSound({
-          url: 'intro/'+current.intro[Math.floor(Math.random()*current.intro.length)],
+          url: 'intro/'+radio.intros[Math.floor(Math.random() * radio.intros.length)],
           autoPlay: true,
           autoLoad: true,
           // url: 'intro/'+radio.name+'/'+current+'.mp3',
