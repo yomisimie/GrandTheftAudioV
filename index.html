@@ -97,7 +97,7 @@ function playSong(radio,intro=true) {
       if(radio.time == 0 && intro == true) {
         playYoutube(current,radio);
         var mySound = soundManager.createSound({
-          url: 'intro/'+radio.intros[Math.floor(Math.random() * radio.intros.length)],
+          url: 'intro/West Coast Classics/'+radio.intros[Math.floor(Math.random() * radio.intros.length)],
           autoPlay: true,
           autoLoad: true,
           // url: 'intro/'+radio.name+'/'+current+'.mp3',
