@@ -92,7 +92,7 @@ function playSong(radio,intro=true) {
       info.style.width = (window.innerHeight - (elSize + 10))+'px';
 
       // CHANGE TITLE
-      document.getElementById( "title" ).innerText = current.artist+': '+current.name;
+      document.getElementById( "title" ).innerText = current.artist.toUppercase()+': '+current.name;
 
       // CALL INTRO
       if(radio.time == 0 && intro == true) {
